@@ -16,7 +16,7 @@ import {
 } from '@react-three/cannon'
 import { useControls } from 'leva'
 import { Geometry } from "three-stdlib";
-import { BoxGeometry } from 'three';
+import { BoxGeometry, EdgesGeometry } from 'three';
 
 function App() {
 
@@ -29,11 +29,9 @@ function App() {
   }
 
   function Diamond(props: any) {
-    const { nodes } = useGLTF("/freeman_alley_dataset.glb");
-    console.log(nodes);
-
+  
     //@ts-ignore
-    const geo = useMemo(() => toConvexProps(nodes.Cylinder.geometry), [nodes]);
+    // const geo = useMemo(() => toConvexProps(nodes['0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_3'].geometry), [nodes]);
     const [ref] = useConvexPolyhedron(() => ({ mass: 100, ...props, args: geo }));
     return (
       <mesh
@@ -41,7 +39,6 @@ function App() {
         receiveShadow
         ref={ref}
         //@ts-ignore
-        geometry={nodes.Cylinder.geometry}
         {...props}
       >
         <meshStandardMaterial wireframe color="white" />
@@ -68,7 +65,7 @@ function App() {
     const [ref] = usePlane(() => ({ ...props }));
 
     return (
-      <Plane args={[1000, 1000]} ref={ref as any}>
+      <Plane args={props.args} ref={ref as any}>
         <meshStandardMaterial color={color} />
       </Plane>
     );
@@ -97,14 +94,17 @@ function App() {
               <Physics>
 
 
-                <Cube position={[0, 0, 0]} rotation={[0.5, 0.4, -1]} size={0.4} />
-                {/* <Diamond position={[1, 5, 0]} rotation={[0.4, 0.1, 0.1]}/> */}
+                {/* <Cube position={[-1, 0, 0]} rotation={[80, 80, 50]} size={0.4} />
                 <PhyPlane
                   color="hotpink"
-                  position={[0, -2, 0]}
+                  position={[0, -8.3, 0]}
                   rotation={[-Math.PI / 2, 0, 0]}
+                  args={[1000, 1000]}
                 />
-                <PhyPlane color="lightblue" position={[0, 0, -10]} />
+                <PhyPlane color="lightblue" position={[0, 0, -37]} args={[1000, 1000]} />
+                <PhyPlane color="lightgreen" position={[0.7, -4, -10.6]} rotation={[0, -Math.PI / 2, 0]} args={[22.7, 10]} />
+                <PhyPlane color="lightgreen" position={[-2.6, -4, -10.6]} rotation={[0, Math.PI / 2, 0]} args={[22.7, 10]} />
+                <PhyPlane color="lightgreen" position={[-2.6, -4, -21.6]} rotation={[0, 0, -Math.PI / 2]} args={[22.7, 10]} /> */}
                 <Model />
 
               </Physics>

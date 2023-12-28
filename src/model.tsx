@@ -5,131 +5,157 @@ License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 Source: https://sketchfab.com/3d-models/freeman-alley-dataset-79e616eab10644f88cb772ddf71bfe0a
 Title: Freeman Alley Dataset
 */
-// @ts-nocheck
-import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+//@ts-nocheck
 
-export function Model(props) {
+import React, { useMemo, useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import * as THREE from 'three';
+import * as BufferGeometryUtilts from './modules/BufferGeometryUtilts.js'
+
+export function Model(props: any) {
   const { nodes, materials } = useGLTF("/freeman_alley_dataset.glb");
+  console.log(nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0"].geometry);
+  const merged = BufferGeometryUtilts.mergeBufferGeometries([ 
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_1"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_2"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_3"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_4"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_1"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_2"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_3"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_1"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_2"].geometry,
+    nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_3"].geometry,
+  ])
+
+  // THREE.Mesh(merged,new THREE.MeshStandardMaterial({ color: 'pink' }))
+
+
+  materials["0727_FREEMAN_ALLEY_u1_v1"].color = new THREE.Color('pink')
   return (
-    <group {...props} dispose={null}>
-      <group
-        position={[3.187, -5.692, 0.504]}
-        rotation={[-1.594, 1.382, -0.259]}
-        scale={0.87}
-      >
-        <group rotation={[-Math.PI, 0, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_1"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_2"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_3"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_4"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u2_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_1"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u2_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_2"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u2_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_3"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u2_v1"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v2"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_1"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v2"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_2"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v2"]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={
-              nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_3"].geometry
-            }
-            material={materials["0727_FREEMAN_ALLEY_u1_v2"]}
-          />
-        </group>
-      </group>
-    </group>
+    <mesh
+      geometry={merged}
+      material={new THREE.MeshStandardMaterial({ color: 'pink' })}
+    />
+    // <group {...props} dispose={null}>
+    //   <group
+    //     position={[3.187, -5.692, 0.504]}
+    //     rotation={[-1.594, 1.382, -0.259]}
+    //     scale={0.87}
+    //   >
+    //     <group rotation={[-Math.PI, 0, 0]}>
+
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_1"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_2"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_3"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_4"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u2_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_1"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u2_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_2"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u2_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_3"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u2_v1"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v2"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_1"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v2"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_2"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v2"]}
+    //       />
+    //       <mesh
+    //         castShadow
+    //         receiveShadow
+    //         geometry={
+    //           nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v2_0_3"].geometry
+    //         }
+    //         material={materials["0727_FREEMAN_ALLEY_u1_v2"]}
+    //       />
+    //     </group>
+    //   </group>
+    // </group>
   );
 }
 
 useGLTF.preload("/freeman_alley_dataset.glb");
-
-
-
