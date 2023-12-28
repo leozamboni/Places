@@ -11,8 +11,22 @@ import React, { useMemo, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from 'three';
 import * as BufferGeometryUtilts from './modules/BufferGeometryUtilts.js'
+import {
+  useConvexPolyhedron,
+} from '@react-three/cannon'
+import { Geometry } from "three-stdlib";
 
 export function Model(props: any) {
+
+  function toConvexProps(bufferGeometry: BufferGeometry): ConvexPolyhedronProps['args'] {
+    const geo = new Geometry().fromBufferGeometry(bufferGeometry)
+    // Merge duplicate vertices resulting from glTF export.
+    // Cannon assumes contiguous, closed meshes to work
+    geo.mergeVertices()
+    return [geo.vertices.map((v) => [v.x, v.y, v.z]), geo.faces.map((f) => [f.a, f.b, f.c]), []]
+  }
+  
+
   const { nodes, materials } = useGLTF("/freeman_alley_dataset.glb");
   console.log(nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0"].geometry);
   const merged = BufferGeometryUtilts.mergeBufferGeometries([ 
@@ -33,13 +47,19 @@ export function Model(props: any) {
 
   // THREE.Mesh(merged,new THREE.MeshStandardMaterial({ color: 'pink' }))
 
+  const args = useMemo(() => toConvexProps(merged), [merged])
+  const [ref] = useConvexPolyhedron(() => ({ args, mass: 100  }), useRef<Mesh>(null))
 
   materials["0727_FREEMAN_ALLEY_u1_v1"].color = new THREE.Color('pink')
   return (
-    <mesh
-      geometry={merged}
-      material={new THREE.MeshStandardMaterial({ color: 'pink' })}
-    />
+    <mesh castShadow receiveShadow {...{ geometry: merged, ref  }}>
+      <meshStandardMaterial wireframe color="pink" />
+    </mesh>
+    // <mesh
+
+    //   geometry={merged}
+    //   material={new THREE.MeshStandardMaterial({ color: 'pink' })}
+    // />
     // <group {...props} dispose={null}>
     //   <group
     //     position={[3.187, -5.692, 0.504]}
