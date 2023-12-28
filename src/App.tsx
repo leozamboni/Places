@@ -20,45 +20,26 @@ import { BoxGeometry, EdgesGeometry } from 'three';
 
 function App() {
 
-  function toConvexProps(bufferGeometry: any) {
-    const geo = new Geometry().fromBufferGeometry(bufferGeometry);
+  function toConvexProps(bufferGeometry:any) {
+    const geo = new Geometry().fromBufferGeometry(bufferGeometry)
     // Merge duplicate vertices resulting from glTF export.
     // Cannon assumes contiguous, closed meshes to work
-    geo.mergeVertices();
-    return [geo.vertices.map((v) => [v.x, v.y, v.z]), geo.faces.map((f) => [f.a, f.b, f.c]), []]; // prettier-ignore
+    geo.mergeVertices()
+    return [geo.vertices.map((v) => [v.x, v.y, v.z]), geo.faces.map((f) => [f.a, f.b, f.c]), []]
   }
 
-  function Diamond(props: any) {
-  
-    //@ts-ignore
-    // const geo = useMemo(() => toConvexProps(nodes['0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u2_v1_0_3'].geometry), [nodes]);
-    const [ref] = useConvexPolyhedron(() => ({ mass: 100, ...props, args: geo }));
-    return (
-      <mesh
-        castShadow
-        receiveShadow
-        ref={ref}
-        //@ts-ignore
-        {...props}
-      >
-        <meshStandardMaterial wireframe color="white" />
-      </mesh>
-    );
-  }
 
-  function Cube({ size, ...props }: any) {
+  function Cube({ position, rotation, size }: any) {
     // note, this is wildly inefficient vs useBox
-    const geo = useMemo(
-      () => toConvexProps(new BoxGeometry(size, size, size)),
-      []
-    );
-    const [ref] = useConvexPolyhedron(() => ({ mass: 100, ...props, args: geo }));
+    const geometry = new BoxGeometry(size, size, size)
+    const args = useMemo(() => toConvexProps(geometry), [geometry]) as any
+    const [ref] = useConvexPolyhedron(() => ({ args, mass: 100, position, rotation }), useRef<any>(null))
     return (
-      <mesh castShadow receiveShadow ref={ref} {...props} geometry={geo}>
+      <mesh castShadow receiveShadow {...{ geometry, position, ref, rotation }}>
         <boxGeometry args={[size, size, size]} />
         <meshPhysicalMaterial color="rebeccapurple" />
       </mesh>
-    );
+    )
   }
 
   function PhyPlane({ color, ...props }: any) {
@@ -91,11 +72,11 @@ function App() {
           <Canvas >
             <Suspense fallback={null}>
 
-              <Physics>
+              <Physics >
+              {/* <Cube position={[0, 0, 4]} rotation={[0.5, 0.4, -1]} size={0.4} /> */}
 
-
-                {/* <Cube position={[-1, 0, 0]} rotation={[80, 80, 50]} size={0.4} />
-                <PhyPlane
+                <Cube position={[0, 0, 4]} rotation={[0.5, 0.4, -1]} size={0.4} />
+                {/* <PhyPlane
                   color="hotpink"
                   position={[0, -8.3, 0]}
                   rotation={[-Math.PI / 2, 0, 0]}

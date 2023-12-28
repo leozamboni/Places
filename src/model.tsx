@@ -12,13 +12,14 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from 'three';
 import * as BufferGeometryUtilts from './modules/BufferGeometryUtilts.js'
 import {
+  useTrimesh,
   useConvexPolyhedron,
 } from '@react-three/cannon'
 import { Geometry } from "three-stdlib";
 
 export function Model(props: any) {
 
-  function toConvexProps(bufferGeometry: BufferGeometry): ConvexPolyhedronProps['args'] {
+  function toConvexProps(bufferGeometry: any) {
     const geo = new Geometry().fromBufferGeometry(bufferGeometry)
     // Merge duplicate vertices resulting from glTF export.
     // Cannon assumes contiguous, closed meshes to work
@@ -28,7 +29,7 @@ export function Model(props: any) {
   
 
   const { nodes, materials } = useGLTF("/freeman_alley_dataset.glb");
-  console.log(nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0"].geometry);
+  // console.log(nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0"].geometry);
   const merged = BufferGeometryUtilts.mergeBufferGeometries([ 
     nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0"].geometry,
     nodes["0727_FREEMAN_ALLEY_0727_FREEMAN_ALLEY_u1_v1_0_1"].geometry,
@@ -47,13 +48,32 @@ export function Model(props: any) {
 
   // THREE.Mesh(merged,new THREE.MeshStandardMaterial({ color: 'pink' }))
 
-  const args = useMemo(() => toConvexProps(merged), [merged])
-  const [ref] = useConvexPolyhedron(() => ({ args, mass: 100  }), useRef<Mesh>(null))
+  // const [ref, api] = useTrimesh(
+  //   () => ({
+  //     args: [merged],
+  //     mass: 1,
+  //     ...props,
+  //   }),
+  //   useRef()
+  // )
 
-  materials["0727_FREEMAN_ALLEY_u1_v1"].color = new THREE.Color('pink')
+  const args = useMemo(() => toConvexProps(merged), [merged])
+
+  const [ref, api] = useTrimesh(
+    () => ({
+      args,
+      mass: 1,
+      ...props,
+    }),
+    useRef()
+  )
+
+  // const [ref] = useConvexPolyhedron(() => ({ args, mass: 100  }), useRef<Mesh>(null))
+
+  // materials["0727_FREEMAN_ALLEY_u1_v1"].color = new THREE.Color('pink')
   return (
     <mesh castShadow receiveShadow {...{ geometry: merged, ref  }}>
-      <meshStandardMaterial wireframe color="pink" />
+      <meshStandardMaterial color="pink" />
     </mesh>
     // <mesh
 
