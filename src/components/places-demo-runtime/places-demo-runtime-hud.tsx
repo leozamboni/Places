@@ -79,7 +79,7 @@ export function PlacesDemoRuntimeHUD({ }: Props) {
                     Eyes on
                     <IconMouse style={{ margin: 'auto' }} />
                     <br />
-                    To explore use
+                    explore using
                     <br />
                     <br />
                     <Box display='flex' margin='auto' w='50%' h='100%' >
@@ -106,11 +106,11 @@ export function PlacesDemoRuntimeHUD({ }: Props) {
                         </Box>
                     </Box>
                     <br />
-                    and <Text as='b'>Space</Text> to jump
+                    and jump with <Text as='b'>Space bar</Text>
                     <IconSpace style={{ margin: 'auto' }} />
                     <br />
-                    <Box w='220px' margin='auto'>
-                        <IconPlayerPause style={{ float: 'left' }} />Return here with <Text as='b'>Esc</Text> key
+                    <Box w='240px' margin='auto'>
+                        <IconPlayerPause style={{ float: 'left' }} />Return here pressing <Text as='b'>Esc</Text> key
                     </Box>
                 </Box>
                 <Box left={0} right={0} margin='auto' color='blue.50' textAlign='center' position='absolute' bottom='0' w='100%'>
@@ -121,7 +121,7 @@ export function PlacesDemoRuntimeHUD({ }: Props) {
             <Box display={showInstructions ? 'none' : 'initial'} position='absolute' textAlign='center' w='100%' h='100%'>
                 <Box left={0} right={0} margin='auto' position='absolute' bottom='40' w='100%'>
                     <Box w='200px' margin='auto'>
-                        <IconPlayerPause style={{ float: 'left' }} /> Pause with <Text as='b'>Esc</Text> key
+                        <IconPlayerPause style={{ float: 'left' }} /> Pause pressing <Text as='b'>Esc</Text> key
                     </Box>
                 </Box>
 
