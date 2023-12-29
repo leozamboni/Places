@@ -56,7 +56,7 @@ export function PlacesDemoRuntimeHUD({ }: Props) {
         <Box h='100%' w='100%' color='gray.100' position='absolute' zIndex={1}>
             <Box display={showInstructions ? 'initial' : 'none'} bg='rgba(0, 0, 0, 0.45)' position='absolute' textAlign='center' w='100%' h='100%' >
                 <Box position='absolute' margin={0} w='100%' top='15%'>
-                    <Text fontSize='6xl' fontFamily='Sharp Grotesk 25' fontWeight='900' letterSpacing='-2px' transform='scale(1,0.6)'>Places demo runtime</Text>
+                    <Text fontSize='6xl' fontFamily='Sharp Grotesk 25' fontWeight='900' letterSpacing='-2px' transform='scale(1,0.6)'>Places Demo Runtime</Text>
                     <Text>{loadingStatus}</Text>
                     <br />
                     <br />
@@ -109,12 +109,12 @@ export function PlacesDemoRuntimeHUD({ }: Props) {
                     and jump with <Text as='b'>Space bar</Text>
                     <IconSpace style={{ margin: 'auto' }} />
                     <br />
-                    <Box w='240px' margin='auto'>
-                        <IconPlayerPause style={{ float: 'left' }} />Return here pressing <Text as='b'>Esc</Text> key
+                    <Box w='270px' margin='auto'>
+                        <IconPlayerPause style={{ float: 'left' }} />Return here by pressing <Text as='b'>Esc</Text> key
                     </Box>
                 </Box>
                 <Box left={0} right={0} margin='auto' color='blue.50' textAlign='center' position='absolute' bottom='0' w='100%'>
-                    New York, Freeman Alley. Places demo runtime v1.0.
+                    New York, Freeman Alley. Places Demo Runtime v1.0.
                 </Box>
             </Box>
 
@@ -126,7 +126,7 @@ export function PlacesDemoRuntimeHUD({ }: Props) {
                 </Box>
 
                 <Box left={0} right={0} margin='auto' color='blue.50' textAlign='center' position='absolute' bottom='0' w='100%'>
-                    New York, Freeman Alley. Places demo runtime v1.0.
+                    New York, Freeman Alley. Places Demo Runtime v1.0.
                 </Box>
             </Box>
         </Box>

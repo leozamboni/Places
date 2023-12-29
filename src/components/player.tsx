@@ -5,8 +5,12 @@ import React, { useRef } from "react";
 import { Vector3 } from "three";
 import * as RAPIER from "@dimforge/rapier3d-compat"
 
-export function Player({ position }: { position: [x:number,y:number,z:number] }) {
-    const SPEED = 5
+interface PlayerProps {
+    position: [x: number, y: number, z: number],
+    speed: number,
+}
+
+export function Player({ position, speed }: PlayerProps) {
     const direction = new Vector3()
     const frontVector = new Vector3()
     const sideVector = new Vector3()
@@ -14,7 +18,7 @@ export function Player({ position }: { position: [x:number,y:number,z:number] })
     const rapier = useRapier()
     const [, get] = useKeyboardControls()
     const { camera } = useThree()
-    camera.rotation.set(0,9.8,0)
+    camera.rotation.set(0, 9.8, 0)
 
     useFrame(() => {
         const { forward, backward, left, right, jump } = get()
@@ -27,12 +31,12 @@ export function Player({ position }: { position: [x:number,y:number,z:number] })
         // movement
         frontVector.set(0, 0, Number(backward) - Number(forward))
         sideVector.set(Number(left) - Number(right), 0, 0)
-        direction.subVectors(frontVector, sideVector).normalize().multiplyScalar(SPEED).applyEuler(camera.rotation)
+        direction.subVectors(frontVector, sideVector).normalize().multiplyScalar(speed).applyEuler(camera.rotation)
         ref.current.setLinvel({ x: direction.x, y: velocity.y, z: direction.z })
 
         // jumping
         const world = rapier.world.raw()
-        const ray = world.castRay(new RAPIER.Ray(ref.current.translation(), { x: 0, y: -1, z: 0 }), 1,false)
+        const ray = world.castRay(new RAPIER.Ray(ref.current.translation(), { x: 0, y: -1, z: 0 }), 1, false)
         const grounded = ray && ray.collider && Math.abs(ray.toi) < 1
         if (jump && grounded) ref.current.setLinvel({ x: 0, y: 7.5, z: 0 })
     })

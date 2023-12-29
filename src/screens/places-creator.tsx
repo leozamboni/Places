@@ -1,14 +1,15 @@
-import { Grid, GridItem } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Button, Grid, GridItem, useBreakpointValue } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import { Sidebar, navigationT } from '../components/sidebar'
+import './style.css'
+import { Canvas, useLoader } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import { GLTFLoader } from 'three-stdlib'
+import { PlacesCreator } from '../components/places-creator/places-creator'
 
-export function PlacesCreator() {
-    return (<Grid
-        h='100vh'
-        templateRows='repeat(1, 1fr)'
-        templateColumns='repeat(2, 1fr)'
-        gap={4}
-      >
-        <GridItem rowSpan={2}  w='50%' bg='tomato' />
-        <GridItem rowSpan={2}  bg='papayawhip' />
-      </Grid>)
+export function PlacesCreatorScreen() {
+
+  return (
+    <PlacesCreator/>
+  )
 }

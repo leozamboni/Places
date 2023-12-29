@@ -22,7 +22,7 @@ export function PlacesRuntimeDemo({ DemoModel }: any) {
 
                 <Canvas >
                     <Physics gravity={[0, -20, 0]}>
-                        <Player position={[-5.303398132324219, -6, -28.87546730041504]} />
+                        <Player speed={5} position={[-5.303398132324219, -6, -28.87546730041504]} />
                         <DemoModel />
                     </Physics>
                     <PointerLockControls selector="#button" />
