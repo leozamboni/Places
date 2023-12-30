@@ -2,7 +2,7 @@
   "name": "travel-to",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://leozamboni.github.io/Places",
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
@@ -36,7 +36,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npx gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
