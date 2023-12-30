@@ -1,6 +1,18 @@
-import { Box, Button, Center, Container, Divider, Text } from "@chakra-ui/react";
-import { IconMouse, IconPlayerPause, IconPlayerPauseFilled, IconSpace, IconSquareArrowDown, IconSquareArrowLeft, IconSquareArrowRight, IconSquareArrowUp, IconSquareLetterA, IconSquareLetterD, IconSquareLetterS, IconSquareLetterW } from "@tabler/icons-react";
-import React, { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Box, Button, Center, Divider, Text } from "@chakra-ui/react";
+import {
+    IconMouse,
+    IconPlayerPause,
+    IconSpace, 
+    IconSquareArrowDown, 
+    IconSquareArrowLeft, 
+    IconSquareArrowRight, 
+    IconSquareArrowUp, 
+    IconSquareLetterA, 
+    IconSquareLetterD, 
+    IconSquareLetterS, 
+    IconSquareLetterW
+} from "@tabler/icons-react";
 import { RotatingLines } from "react-loader-spinner";
 import { DefaultLoadingManager } from "three";
 

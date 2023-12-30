@@ -1,6 +1,6 @@
-import React, { Children } from "react";
+import React from "react";
 import { Box } from "@chakra-ui/react";
-import { Environment, KeyboardControls, PointerLockControls } from "@react-three/drei";
+import { KeyboardControls, PointerLockControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { Player } from "../player";
@@ -26,7 +26,7 @@ export function PlacesRuntimeDemo({ DemoModel }: any) {
                         <Player speed={5} position={new Vector3(-2.6042091846466064, -6, -21.494176864624023)} />
                         <DemoModel />
                     </Physics>
-                    
+
                     <PointerLockControls selector="#button" />
                     <ambientLight intensity={2} />
                     <pointLight intensity={0.8} position={[5, 0, 5]} />

@@ -1,11 +1,10 @@
-import React, { Children, useContext } from "react";
+import React, { useContext } from "react";
 import { Box } from "@chakra-ui/react";
 import { KeyboardControls, PointerLockControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { MeshCollider, Physics, RigidBody, Vector3Array } from "@react-three/rapier";
+import { MeshCollider, Physics, RigidBody } from "@react-three/rapier";
 import { Player } from "../player";
 import { PlacesRuntimeHUD } from "./places-runtime-hud";
-import { Vector3 } from "three";
 import {  PlacesRuntimeContext } from "../places-creator";
 
 

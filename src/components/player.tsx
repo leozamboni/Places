@@ -1,7 +1,7 @@
+import React, { useRef } from "react";
 import { useKeyboardControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { CapsuleCollider, RigidBody, useRapier } from "@react-three/rapier";
-import React, { useRef } from "react";
 import { Vector3 } from "three";
 import * as RAPIER from "@dimforge/rapier3d-compat"
 
