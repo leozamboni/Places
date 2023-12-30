@@ -11,7 +11,7 @@ type Props = {
 
 export function PlacesRuntimeHUD({ title }: Props) {
     const [showInstructions, setShowInstructions] = useState(true)
-    const [loadingStatus, setLoadingStatus] = useState('Loading started.')
+    const [loadingStatus, setLoadingStatus] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 

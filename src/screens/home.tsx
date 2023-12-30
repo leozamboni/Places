@@ -16,9 +16,9 @@ export function Home() {
         templateColumns='repeat(4, 1fr)'
         gap={1}
     >
-        <GridItem colSpan={2} bg='linear-gradient(170deg, rgba(170,255,214,1) 0%, rgba(176,242,255,1) 50%, rgba(255,130,172,1) 100%)' position='relative'>
+        <GridItem colSpan={2} bg='linear-gradient(166deg, rgba(255,230,115,1) 0%, rgba(255,196,0,1) 100%)' position='relative'>
             <Box position='absolute' left='15%' top='20%' color='#1a1a1a'>
-                <Text fontSize='130pt' fontFamily='Sharp Grotesk 25' fontWeight='900' letterSpacing='-8px' transform='scale(1,0.6)'>Places</Text>
+                <Text fontSize='130pt' fontFamily='Sharp Grotesk 25' fontWeight='900' letterSpacing='-12px' transform='scale(1,0.5)'>Places</Text>
                 <Text fontSize='6xl' fontFamily='Sharp Grotesk 25' lineHeight='80%' letterSpacing='-1px' mt='-70px' transform='scale(1,0.6)'>Walk and explore the world by using photogrammetry!</Text>
                 <Link href='https://github.com/leozamboni/Places'><IconBrandGithubFilled /></Link>
             </Box>
@@ -53,7 +53,7 @@ export function Home() {
 
                 <ModalFooter>
                     <Button mr={3} onClick={() => setModalOpen(false)}>
-                    I understand
+                    Ok
                     </Button>
                 </ModalFooter>
             </ModalContent>

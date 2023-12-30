@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { Canvas } from '@react-three/fiber'
 import { useFormik, } from 'formik'
-import { useCallback, useContext, useRef, useState } from 'react'
+import { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js'
@@ -24,7 +24,7 @@ import { Vector3Array } from '@react-three/rapier'
 
 
 interface PlacesRuntimeSettings {
-    Model: any,
+    scene: any,
     playerSpeed: number,
     gravity: Vector3Array,
     playerPosition: Vector3,
@@ -58,6 +58,7 @@ export function PlacesCreator({ startScene }) {
     const [scene, setScene] = useState<any>(startScene)
     const [title, setTitle] = useState<any>('New York, Freeman Alley')
     const navigator = useNavigate()
+    const { placesRuntimeSettings } = useContext(PlacesRuntimeContext);
 
     const onDrop = useCallback(async (acceptedFiles) => {
         acceptedFiles.forEach((file) => {
@@ -75,11 +76,11 @@ export function PlacesCreator({ startScene }) {
 
     function handleRunOnPlacesRuntime() {
         setPlacesRuntimeSettings({
-            Model: () => <primitive object={scene} />,
             playerSpeed: formik.values.playerSpeed,
             gravity: [formik.values.gravityX, formik.values.gravityY, formik.values.gravityZ],
             playerPosition: new Vector3(formik.values.playerX, formik.values.playerY, formik.values.playerZ),
             day: formik.values.day ? true : false,
+            scene,
             title,
         })
         navigator('/places-runtime')
@@ -101,6 +102,23 @@ export function PlacesCreator({ startScene }) {
         },
         onSubmit: (e) => { console.log(e) }
     });
+
+
+    useEffect(() => {
+        if (placesRuntimeSettings) {
+            setScene(placesRuntimeSettings.scene)
+            setTitle(placesRuntimeSettings.title)
+            formik.setFieldValue('playerX',placesRuntimeSettings.playerPosition.x)
+            formik.setFieldValue('playerY',placesRuntimeSettings.playerPosition.y)
+            formik.setFieldValue('playerZ',placesRuntimeSettings.playerPosition.z)
+            formik.setFieldValue('playerSpeed',placesRuntimeSettings.playerSpeed)
+            formik.setFieldValue('gravityX',placesRuntimeSettings.gravity[0])
+            formik.setFieldValue('gravityY',placesRuntimeSettings.gravity[1])
+            formik.setFieldValue('gravityZ',placesRuntimeSettings.gravity[2])
+        }
+     }, [])
+
+
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
         maxFiles: 1,

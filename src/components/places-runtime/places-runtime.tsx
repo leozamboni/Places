@@ -5,7 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { MeshCollider, Physics, RigidBody } from "@react-three/rapier";
 import { Player } from "../player";
 import { PlacesRuntimeHUD } from "./places-runtime-hud";
-import {  PlacesRuntimeContext } from "../places-creator";
+import { PlacesRuntimeContext } from "../places-creator";
 
 
 
@@ -29,7 +29,7 @@ export function PlacesRuntime() {
                         <Player speed={placesRuntimeSettings.playerSpeed} position={placesRuntimeSettings.playerPosition} />
                         <RigidBody type='fixed' colliders='hull'>
                             <MeshCollider type={'trimesh'}>
-                                <placesRuntimeSettings.Model />
+                                <primitive object={placesRuntimeSettings.scene} />
                             </MeshCollider>
                         </RigidBody>
                     </Physics>

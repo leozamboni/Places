@@ -26,8 +26,6 @@ export function Player({ position, speed }: PlayerProps) {
 
         // update camera
         let p = ref.current.translation()
-        console.log(p);
-        
         camera.position.set(p.x, p.y, p.z)
 
         // movement
