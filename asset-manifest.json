@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9465ffff.css",
+    "main.js": "/static/js/main.eefa0034.js",
+    "static/media/SharpGrotesk-Black25.otf": "/static/media/SharpGrotesk-Black25.b9ba2dcfa7455094fe18.otf",
+    "index.html": "/index.html",
+    "main.9465ffff.css.map": "/static/css/main.9465ffff.css.map",
+    "main.eefa0034.js.map": "/static/js/main.eefa0034.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9465ffff.css",
+    "static/js/main.eefa0034.js"
+  ]
+}
