@@ -15,7 +15,7 @@ export function PlacesCreatorScreen() {
       animationDuration="0.75"
       ariaLabel="rotating-lines-loading"
     />}>
-      <PlacesCreator startScene={useLoader(GLTFLoader, '/freeman_alley_dataset.glb').scene} />
+      <PlacesCreator startScene={useLoader(GLTFLoader, './freeman_alley_dataset.glb').scene} />
     </Suspense>
 
   )

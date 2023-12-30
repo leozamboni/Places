@@ -11,7 +11,7 @@ import { useGLTF } from "@react-three/drei";
 import { MeshCollider, RigidBody } from "@react-three/rapier";
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF("/freeman_alley_dataset.glb");
+  const { nodes, materials } = useGLTF("./freeman_alley_dataset.glb");
   return (
     <RigidBody type='fixed' colliders='hull'>
       <MeshCollider type={'trimesh'}>
@@ -135,4 +135,4 @@ export function Model(props) {
   );
 }
 
-useGLTF.preload("/freeman_alley_dataset.glb");
+useGLTF.preload("./freeman_alley_dataset.glb");
