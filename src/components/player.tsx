@@ -6,7 +6,7 @@ import { Vector3 } from "three";
 import * as RAPIER from "@dimforge/rapier3d-compat"
 
 interface PlayerProps {
-    position: [x: number, y: number, z: number],
+    position: Vector3,
     speed: number,
 }
 
@@ -26,6 +26,8 @@ export function Player({ position, speed }: PlayerProps) {
 
         // update camera
         let p = ref.current.translation()
+        console.log(p);
+        
         camera.position.set(p.x, p.y, p.z)
 
         // movement
