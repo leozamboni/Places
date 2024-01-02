@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { Canvas } from '@react-three/fiber'
 import { useFormik, } from 'formik'
-import { useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { Suspense, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js'
@@ -21,6 +21,7 @@ import { REVISION, Vector3, WebGLRenderer } from 'three'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import { Vector3Array } from '@react-three/rapier'
+import { RotatingLines } from 'react-loader-spinner'
 
 
 interface PlacesRuntimeSettings {
@@ -108,15 +109,15 @@ export function PlacesCreator({ startScene }) {
         if (placesRuntimeSettings) {
             setScene(placesRuntimeSettings.scene)
             setTitle(placesRuntimeSettings.title)
-            formik.setFieldValue('playerX',placesRuntimeSettings.playerPosition.x)
-            formik.setFieldValue('playerY',placesRuntimeSettings.playerPosition.y)
-            formik.setFieldValue('playerZ',placesRuntimeSettings.playerPosition.z)
-            formik.setFieldValue('playerSpeed',placesRuntimeSettings.playerSpeed)
-            formik.setFieldValue('gravityX',placesRuntimeSettings.gravity[0])
-            formik.setFieldValue('gravityY',placesRuntimeSettings.gravity[1])
-            formik.setFieldValue('gravityZ',placesRuntimeSettings.gravity[2])
+            formik.setFieldValue('playerX', placesRuntimeSettings.playerPosition.x)
+            formik.setFieldValue('playerY', placesRuntimeSettings.playerPosition.y)
+            formik.setFieldValue('playerZ', placesRuntimeSettings.playerPosition.z)
+            formik.setFieldValue('playerSpeed', placesRuntimeSettings.playerSpeed)
+            formik.setFieldValue('gravityX', placesRuntimeSettings.gravity[0])
+            formik.setFieldValue('gravityY', placesRuntimeSettings.gravity[1])
+            formik.setFieldValue('gravityZ', placesRuntimeSettings.gravity[2])
         }
-     }, [])
+    }, [])
 
 
     const { getRootProps, getInputProps } = useDropzone({
@@ -297,7 +298,6 @@ export function PlacesCreator({ startScene }) {
                 <primitive object={scene} ref={primitiveRef} />
                 <OrbitControls ref={orbitRef} />
             </Canvas>
-
 
             <Box position='absolute' bottom='2' right='2'>
                 <Box onClick={handleRunOnPlacesRuntime} cursor='pointer' w='200px' h='150px' bg='black' textAlign='center' color='white'>

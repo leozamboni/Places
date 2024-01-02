@@ -2,7 +2,7 @@
   "name": "travel-to",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://leozamboni.github.io/Places",
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
@@ -53,5 +53,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
