@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/placee.es/static/css/main.a4819c58.css",
-    "main.js": "/placee.es/static/js/main.4dabea02.js",
-    "static/media/SharpGrotesk-Black25.otf": "/placee.es/static/media/SharpGrotesk-Black25.b9ba2dcfa7455094fe18.otf",
-    "index.html": "/placee.es/index.html"
+    "main.css": "/static/css/main.40e489d6.css",
+    "main.js": "/static/js/main.64f8c7f3.js",
+    "static/media/SharpGrotesk-Black25.otf": "/static/media/SharpGrotesk-Black25.b9ba2dcfa7455094fe18.otf",
+    "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.a4819c58.css",
-    "static/js/main.4dabea02.js"
+    "static/css/main.40e489d6.css",
+    "static/js/main.64f8c7f3.js"
   ]
 }
