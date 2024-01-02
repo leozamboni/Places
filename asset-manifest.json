@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/leozamboni.github.io/Places/static/css/main.dc1eb46f.css",
-    "main.js": "/leozamboni.github.io/Places/static/js/main.12f096df.js",
-    "static/media/SharpGrotesk-Black25.otf": "/leozamboni.github.io/Places/static/media/SharpGrotesk-Black25.b9ba2dcfa7455094fe18.otf",
-    "index.html": "/leozamboni.github.io/Places/index.html",
-    "main.dc1eb46f.css.map": "/leozamboni.github.io/Places/static/css/main.dc1eb46f.css.map",
-    "main.12f096df.js.map": "/leozamboni.github.io/Places/static/js/main.12f096df.js.map"
+    "main.css": "/Places/static/css/main.db84a709.css",
+    "main.js": "/Places/static/js/main.c4347bf1.js",
+    "static/media/SharpGrotesk-Black25.otf": "/Places/static/media/SharpGrotesk-Black25.b9ba2dcfa7455094fe18.otf",
+    "index.html": "/Places/index.html",
+    "main.db84a709.css.map": "/Places/static/css/main.db84a709.css.map",
+    "main.c4347bf1.js.map": "/Places/static/js/main.c4347bf1.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc1eb46f.css",
-    "static/js/main.12f096df.js"
+    "static/css/main.db84a709.css",
+    "static/js/main.c4347bf1.js"
   ]
 }
