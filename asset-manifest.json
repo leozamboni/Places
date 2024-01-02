@@ -1,14 +1,12 @@
 {
   "files": {
-    "main.css": "/Places/static/css/main.db84a709.css",
-    "main.js": "/Places/static/js/main.c4347bf1.js",
+    "main.css": "/Places/static/css/main.1cd66f0c.css",
+    "main.js": "/Places/static/js/main.28038a3e.js",
     "static/media/SharpGrotesk-Black25.otf": "/Places/static/media/SharpGrotesk-Black25.b9ba2dcfa7455094fe18.otf",
-    "index.html": "/Places/index.html",
-    "main.db84a709.css.map": "/Places/static/css/main.db84a709.css.map",
-    "main.c4347bf1.js.map": "/Places/static/js/main.c4347bf1.js.map"
+    "index.html": "/Places/index.html"
   },
   "entrypoints": [
-    "static/css/main.db84a709.css",
-    "static/js/main.c4347bf1.js"
+    "static/css/main.1cd66f0c.css",
+    "static/js/main.28038a3e.js"
   ]
 }
