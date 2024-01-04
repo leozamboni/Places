@@ -58,7 +58,7 @@ export function PlacesRuntimeHUD({ title }: Props) {
     return (
         <Box h='100%' w='100%' color='gray.100' position='absolute' zIndex={1}>
             <Box display={showInstructions ? 'initial' : 'none'} bg='rgba(0, 0, 0, 0.45)' position='absolute' textAlign='center' w='100%' h='100%' >
-                <Box position='absolute' margin={0} w='100%' top='15%'>
+                <Box position='absolute' margin={0} w='100%' top='10%'>
                     <Text fontSize='6xl' fontFamily='Sharp Grotesk 25' fontWeight='900' letterSpacing='-2px' transform='scale(1,0.6)'>Places Runtime</Text>
                     <Text>{loadingStatus}</Text>
                     <br />
@@ -86,7 +86,7 @@ export function PlacesRuntimeHUD({ title }: Props) {
 
                 </Box>
 
-                <Box left={0} right={0} margin='auto' position='absolute' bottom='40' w='100%'>
+                <Box left={0} right={0} margin='auto' position='absolute' bottom='10%' w='100%'>
                     Eyes on
                     <IconMouse style={{ margin: 'auto' }} />
                     <br />
