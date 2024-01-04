@@ -1,9 +1,8 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import './style.css'
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three-stdlib'
 import { PlacesCreator } from '../components/places-creator/places-creator'
-import { RotatingLines } from 'react-loader-spinner'
 
 export function PlacesCreatorScreen() {
 

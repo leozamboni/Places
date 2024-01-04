@@ -21,7 +21,6 @@ import { REVISION, Vector3, WebGLRenderer } from 'three'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import { Vector3Array } from '@react-three/rapier'
-import { RotatingLines } from 'react-loader-spinner'
 
 
 interface PlacesRuntimeSettings {

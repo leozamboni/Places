@@ -5,6 +5,7 @@ import { Home } from './screens/home';
 import { PlacesCreatorScreen } from './screens/places-creator';
 import { PlacesRuntime } from './components/places-runtime';
 import { PlacesRuntimeContext } from './components/places-creator';
+import { RotatingLines } from 'react-loader-spinner';
 
 function App() {
   const [placesRuntimeSettings, setPlacesRuntimeSettings] = React.useState(null);
@@ -23,6 +24,25 @@ function App() {
 
   const isMobile = width <= 768;
 
+  function loading() {
+    return (
+      <Box w='100vw' h='100vh' textAlign='center'>
+        <Text fontSize='50pt' fontFamily='Sharp Grotesk 25' fontWeight='900' letterSpacing='-5px' transform='scale(1,0.6)'>Places</Text>
+        <Box display='flex' justifyContent='center' alignItems='center' >
+          <RotatingLines
+            strokeColor="black"
+            visible={true}
+            width="30"
+            strokeWidth="5"
+            animationDuration="0.75"
+            ariaLabel="rotating-lines-loading"
+          />
+        </Box>
+      </Box>
+
+    )
+  }
+
   return (
 
     <ChakraProvider>
@@ -38,7 +58,7 @@ function App() {
         >
           <React.StrictMode>
             <HashRouter>
-              <Suspense fallback={undefined}>
+              <Suspense fallback={loading()}>
                 <Routes>
                   <Route path="/" >
                     <Route index element={<Home />} />
