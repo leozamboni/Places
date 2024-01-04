@@ -19,12 +19,8 @@ export function Home() {
         <GridItem colSpan={2} bg='linear-gradient(166deg, rgba(255,230,115,1) 0%, rgba(255,196,0,1) 100%)' position='relative'>
             <Box position='absolute' left='15%' top='20%' color='black'>
                 <Text fontSize='130pt' fontFamily='Sharp Grotesk 25' fontWeight='900' letterSpacing='-15px' transform='scale(1,0.5)'>
-                    Plac
-                    <span style={{ color: '#1a1a1a' }}>e</span>
-                    <span style={{ color: '#262626' }}>e</span>
-                    <span style={{ color: '#333333' }}>.</span>
-                    <span style={{ color: '#404040' }}>e</span>
-                    <span style={{ color: '#4d4d4d' }}>s</span></Text>
+                    Places
+                    </Text>
                 <Text fontSize='6xl' fontFamily='Sharp Grotesk 25' lineHeight='80%' letterSpacing='-1px' mt='-70px' transform='scale(1,0.6)'>Walk and explore the world by using photogrammetry!</Text>
                 <Link href='https://github.com/leozamboni/Places'><IconBrandGithubFilled /></Link>
             </Box>
